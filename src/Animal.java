@@ -7,3 +7,4 @@ public abstract class Animal{
     int age,cost;
     abstract void  setDatabase() throws SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, ClassNotFoundException;
 }
+
