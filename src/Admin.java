@@ -173,4 +173,19 @@ public class Admin {
         }
     }
   
+  
+  void addAdmin() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        DataBase base = new DataBase();
+        System.out.println("Enter nickname:");
+        String nickname = sc.nextLine();
+        System.out.println("Enter email:");
+        String email = sc.nextLine();
+        System.out.println("Enter password:");
+        String password = sc.nextLine();
+        PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT admin (nickname, email, password_) values (?, ?, ?)");
+        preparedStatement.setString(1,nickname);
+        preparedStatement.setString(2, email);
+        preparedStatement.setString(3,password);
+        preparedStatement.executeUpdate();
+    }
 }
