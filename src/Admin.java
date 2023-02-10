@@ -116,4 +116,61 @@ public class Admin {
 
         }
     }
+  
+  void deleteAnimal(int m, int n) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        DataBase base = new DataBase();
+        switch (m){
+            case 1:
+                try{
+                    String sql = "DELETE FROM birds where id = " + n;
+                    base.statement.executeUpdate(sql);
+                    }
+                catch(Exception ex) {
+                    System.out.println("Введен неверный id");
+                    System.out.println(ex);
+                }
+                break;
+            case 2:
+                try {
+                    String sql = "DELETE FROM fish where id = " + n;
+                    base.statement.executeUpdate(sql);
+                }
+                catch(Exception ex) {
+                    System.out.println("Введен неверный id");
+                    System.out.println(ex);
+                }
+                break;
+            case 3:
+                try{
+                    String sql = "DELETE FROM dogs where id = " + n;
+                    base.statement.executeUpdate(sql);
+                }
+                catch(Exception ex){
+                    System.out.println("Введен неверный id");
+                    System.out.println(ex);
+                }
+                break;
+            case 4:
+                try{
+                    String sql = "DELETE FROM cats where id = " +  n;
+                    base.statement.executeUpdate(sql);
+                }
+                catch(Exception ex){
+                        System.out.println("Введен неверный id");
+                        System.out.println(ex);
+                        }
+                break;
+            case 5:
+                try {
+                    String sql = "DELETE FROM rodents where id = " + n;
+                    base.statement.executeUpdate(sql);
+                }
+                catch(Exception ex){
+                    System.out.println("Введен неверный id");
+                    System.out.println(ex);
+                }
+                break;
+        }
+    }
+  
 }
