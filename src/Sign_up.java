@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class Sign_up {
     private String nickname;
     private String password;
+
     void addNewUser() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
         Scanner sc = new Scanner(System.in);
@@ -46,9 +47,12 @@ public class Sign_up {
         preparedStatement.setString(8, address);
         preparedStatement.executeUpdate();
     }
-    String getNickname(){
+
+    String getNickname() {
         return this.nickname;
     }
-    String getPassword(){
+
+    String getPassword() {
         return this.password;
     }
+}
