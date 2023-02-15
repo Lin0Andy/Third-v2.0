@@ -44,6 +44,7 @@ public class User extends Log_in {
                         preparedStatement.setString(2, "Bird");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
+                        cost = resultSet.getInt(3);
                         preparedStatement.setFloat(5, resultSet.getFloat(4));
                         preparedStatement.setString(6, resultSet.getString(5));
                         preparedStatement.setString(7, resultSet.getString(6));
@@ -74,6 +75,7 @@ public class User extends Log_in {
                         preparedStatement.setString(2, "fish");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
+                        cost = resultSet.getInt(3);
                         preparedStatement.setFloat(5, resultSet.getFloat(4));
                         preparedStatement.setString(6, resultSet.getString(5));
                         preparedStatement.setString(7, resultSet.getString(6));
@@ -103,6 +105,7 @@ public class User extends Log_in {
                         preparedStatement.setString(2, "Dog");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
+                        cost = resultSet.getInt(3);
                         preparedStatement.setFloat(5, resultSet.getFloat(4));
                         preparedStatement.setString(6, resultSet.getString(5));
                         preparedStatement.setString(7, resultSet.getString(6));
@@ -132,6 +135,7 @@ public class User extends Log_in {
                         preparedStatement.setString(2, "Cat");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
+                        cost = resultSet.getInt(3);
                         preparedStatement.setFloat(5, resultSet.getFloat(4));
                         preparedStatement.setString(6, resultSet.getString(5));
                         preparedStatement.setString(7, resultSet.getString(6));
@@ -160,6 +164,7 @@ public class User extends Log_in {
                         preparedStatement.setString(2, "Rodent");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
+                        cost = resultSet.getInt(3);
                         preparedStatement.setFloat(5, resultSet.getFloat(4));
                         preparedStatement.setString(6, resultSet.getString(5));
                         preparedStatement.setString(7, resultSet.getString(6));
@@ -275,9 +280,11 @@ public class User extends Log_in {
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
     public void setBalance(int balance) {
         this.balance = balance;
     }
+
     public void setCost(int cost) {
         this.cost = cost;
     }
