@@ -83,7 +83,9 @@ public class User extends Log_in {
                         preparedStatement.setString(9, resultSet.getString(8));
                         preparedStatement.setString(10, resultSet.getString(9));
                         preparedStatement.setString(11,resultSet.getString(10));
+                        check(resultSet.getInt(3));
                         preparedStatement.executeUpdate();
+                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
                     }
 
                     String sql = "DELETE FROM fish where id = " + id;
@@ -113,7 +115,9 @@ public class User extends Log_in {
                         preparedStatement.setString(9, resultSet.getString(8));
                         preparedStatement.setString(10, resultSet.getString(9));
                         preparedStatement.setString(11, resultSet.getString(10));
+                        check(resultSet.getInt(3));
                         preparedStatement.executeUpdate();
+                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
                     }
 
                     String sql = "DELETE FROM dogs where id = " + id;
@@ -142,7 +146,9 @@ public class User extends Log_in {
                         preparedStatement.setString(8, resultSet.getString(7));
                         preparedStatement.setString(9, resultSet.getString(8));
                         preparedStatement.setString(10, resultSet.getString(9));
+                        check(resultSet.getInt(3));
                         preparedStatement.executeUpdate();
+                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
                     }
 
                     String sql = "DELETE FROM cats where id = " +  id;
@@ -171,7 +177,9 @@ public class User extends Log_in {
                         preparedStatement.setString(8, resultSet.getString(7));
                         preparedStatement.setString(9, resultSet.getString(8));
                         preparedStatement.setString(10, resultSet.getString(9));
+                        check(resultSet.getInt(3));
                         preparedStatement.executeUpdate();
+                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
                     }
 
                     String sql = "DELETE FROM rodents where id = " + id;
