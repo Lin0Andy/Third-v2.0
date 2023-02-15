@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class User extends Log_in{
+public class User extends Log_in {
 
     private String firstName, lastName, username, password, email, address;
     private long phoneNumber;
@@ -26,17 +26,18 @@ public class User extends Log_in{
             }
         }
     }
+
     void buyAnimal(int type, int id) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
-        switch (type){
+        switch (type) {
             case 1:
-                try{
+                try {
                     String sql1 = "SELECT * FROM birds WHERE id = " + id;
                     System.out.println(sql1);
                     ResultSet resultSet = base.statement.executeQuery(sql1);
                     PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT purchases(userName, typeOfAnimal, cost, age, weight, sex, abilities, diet, Life_cycle, color, species)" +
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
-                    while(resultSet.next()){
+                    while (resultSet.next()) {
                         preparedStatement.setString(1, this.username);
                         preparedStatement.setString(2, "Bird");
                         preparedStatement.setInt(3, resultSet.getInt(2));
@@ -47,14 +48,13 @@ public class User extends Log_in{
                         preparedStatement.setString(8, resultSet.getString(7));
                         preparedStatement.setString(9, resultSet.getString(8));
                         preparedStatement.setString(10, resultSet.getString(9));
-                        preparedStatement.setString(11,resultSet.getString(10));
+                        preparedStatement.setString(11, resultSet.getString(10));
                         preparedStatement.executeUpdate();
                     }
 
                     String sql = "DELETE FROM birds where id = " + id;
                     base.statement.executeUpdate(sql);
-                }
-                catch(Exception ex) {
+                } catch (Exception ex) {
                     System.out.println("Введен неверный id");
                     System.out.println(ex);
                 }
@@ -75,18 +75,17 @@ public class User extends Log_in{
                     preparedStatement.setString(8, resultSet.getString(7));
                     preparedStatement.setString(9, resultSet.getString(8));
                     preparedStatement.setString(10, resultSet.getString(9));
-                    preparedStatement.setString(11,resultSet.getString(10));
+                    preparedStatement.setString(11, resultSet.getString(10));
                     preparedStatement.executeUpdate();
                     String sql = "DELETE FROM fish where id = " + id;
                     base.statement.executeUpdate(sql);
-                }
-                catch(Exception ex) {
+                } catch (Exception ex) {
                     System.out.println("Введен неверный id");
                     System.out.println(ex);
                 }
                 break;
             case 3:
-                try{
+                try {
                     String sql1 = "SELECT * FROM dogs WHERE id = " + id;
                     ResultSet resultSet = base.statement.executeQuery(sql1);
                     PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT purchases(userName, typeOfAnimal, cost, age, weight, sex, color, abilities,  species)" +
@@ -103,14 +102,13 @@ public class User extends Log_in{
                     preparedStatement.executeUpdate();
                     String sql = "DELETE FROM dogs where id = " + id;
                     base.statement.executeUpdate(sql);
-                }
-                catch(Exception ex){
+                } catch (Exception ex) {
                     System.out.println("Введен неверный id");
                     System.out.println(ex);
                 }
                 break;
             case 4:
-                try{
+                try {
                     String sql1 = "SELECT * FROM cats WHERE id = " + id;
                     ResultSet resultSet = base.statement.executeQuery(sql1);
                     PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT purchases(userName, typeOfAnimal, cost, age, weight, sex,  species)" +
@@ -124,10 +122,9 @@ public class User extends Log_in{
                     preparedStatement.setString(7, resultSet.getString(6));
                     preparedStatement.setString(8, resultSet.getString(7));
                     preparedStatement.executeUpdate();
-                    String sql = "DELETE FROM cats where id = " +  id;
+                    String sql = "DELETE FROM cats where id = " + id;
                     base.statement.executeUpdate(sql);
-                }
-                catch(Exception ex){
+                } catch (Exception ex) {
                     System.out.println("Введен неверный id");
                     System.out.println(ex);
                 }
@@ -149,25 +146,25 @@ public class User extends Log_in{
                     preparedStatement.executeUpdate();
                     String sql = "DELETE FROM rodents where id = " + id;
                     base.statement.executeUpdate(sql);
-                }
-                catch(Exception ex){
+                } catch (Exception ex) {
                     System.out.println("Введен неверный id");
                     System.out.println(ex);
                 }
                 break;
         }
     }
+
     void getAnimals(int n) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
-        switch (n){
+        switch (n) {
             case 1:
                 ResultSet resultSet = base.statement.executeQuery("SELECT * FROM birds");
-                while (resultSet.next()){
+                while (resultSet.next()) {
                     System.out.println("id: " + resultSet.getInt(1) + "; cost: " + resultSet.getInt(2) + "; age: " + resultSet.getInt(3) +
                             "; weight: " + resultSet.getFloat(4) + "; sex: " + resultSet.getString(5) + "; abilities: " + resultSet.getString(6) +
                             "; diet: " + resultSet.getString(7) + "; life cycle: " + resultSet.getString(8) + "; color: " + resultSet.getString(9) +
                             "; species: " + resultSet.getString(10));
-            }
+                }
                 break;
             case 2:
                 ResultSet resultSetF = base.statement.executeQuery("SELECT * FROM fish");
@@ -208,21 +205,23 @@ public class User extends Log_in{
         }
 
     }
+
     void showPurchases() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
-        try{
+        try {
             String sql = "SELECT * FROM purchases WHERE userName = " + this.username;
             ResultSet resultSet = base.statement.executeQuery(sql);
-            while(resultSet.next()){
+            while (resultSet.next()) {
                 System.out.println("type of animal: " + resultSet.getString(3) + "; cost: " + resultSet.getInt(4) + "; age: " + resultSet.getInt(5) +
                         "; weight: " + resultSet.getFloat(6) + "; sex: " + resultSet.getString(7) + "; abilities: " + resultSet.getString(8) +
                         "; diet: " + resultSet.getString(9) + "; life cycle: " + resultSet.getString(10) + "; color: " + resultSet.getString(11) +
                         "; species: " + resultSet.getString(12));
             }
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println("You are not shopping in our store.");
         }
     }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -230,33 +229,43 @@ public class User extends Log_in{
     public void setPassword(String password) {
         this.password = password;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     public void setAddress(String address) {
         this.address = address;
     }
+
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public void setWallet(double wallet){
+
+    public void setWallet(double wallet) {
         this.wallet = wallet;
     }
+
     public String getPassword() {
         return this.password;
     }
+
     public String getUsername() {
         return username;
     }
+
     public String getEmail() {
         return email;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -268,10 +277,12 @@ public class User extends Log_in{
     public String getAddress() {
         return address;
     }
-    public double getWallet(){
+
+    public double getWallet() {
         return this.wallet;
     }
 
     public long getPhoneNumber() {
         return phoneNumber;
     }
+}
