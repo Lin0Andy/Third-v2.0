@@ -52,3 +52,5 @@ public class Sign_up {
     String getPassword(){
         return this.password;
     }
+
+}

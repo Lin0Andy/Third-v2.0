@@ -1,3 +1,8 @@
+import java.lang.reflect.InvocationTargetException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
 public class Admin {
   Scanner sc = new Scanner(System.in);
     void addNewAnimal(String type) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
