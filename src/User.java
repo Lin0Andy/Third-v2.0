@@ -51,7 +51,9 @@ public class User extends Log_in {
                         preparedStatement.setString(9, resultSet.getString(8));
                         preparedStatement.setString(10, resultSet.getString(9));
                         preparedStatement.setString(11,resultSet.getString(10));
+                        check(resultSet.getInt(3));
                         preparedStatement.executeUpdate();
+                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
                     }
                     String sql = "DELETE FROM birds where id = " + id;
                     base.statement.executeUpdate(sql);
@@ -324,7 +326,7 @@ public class User extends Log_in {
         return balance;
     }
 
-    public void check() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public void check(int cost) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
         try{
             String sql1 = "SELECT * FROM users WHERE username = '" + this.username + "'";
