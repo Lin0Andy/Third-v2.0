@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public abstract class Log_in {
+public class Log_in {
     Scanner sc = new Scanner(System.in);
 
     int log_in(String nickname, String password) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
