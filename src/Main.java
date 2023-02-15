@@ -8,18 +8,18 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         boolean repeat = true;
         int n = 0;
-        while(repeat){
+        while (repeat) {
             System.out.println("Choose case:\n" +
                     "1. Log in\n" +
                     "2. Sign up");
             n = sc.nextInt();
             sc.nextLine();
-            if (n == 1 || n == 2){
+            if (n == 1 || n == 2) {
                 repeat = false;
             }
         }
         repeat = true;
-        switch (n){
+        switch (n) {
             case 2:
                 Sign_up signUp = new Sign_up();
                 signUp.addNewUser();
@@ -30,10 +30,10 @@ public class Main {
                 String nickname = sc.nextLine();
                 System.out.println("Enter your password");
                 String password = sc.nextLine();
-                switch (logIn.log_in(nickname, password)){
+                switch (logIn.log_in(nickname, password)) {
                     case 1:
                         Admin admin = new Admin();
-                        while (repeat){
+                        while (repeat) {
                             System.out.println("Что вы хотите изменить:\n" +
                                     "1. Добавить новый питомец\n" +
                                     "2. Удалить питомца\n" +
@@ -41,7 +41,7 @@ public class Main {
                                     "4. Exit");
                             n = sc.nextInt();
                             sc.nextLine();
-                            switch (n){
+                            switch (n) {
                                 case 1:
                                     System.out.println("Какой тип животного вы хотите добавить?");
                                     String type = sc.nextLine();
@@ -73,14 +73,14 @@ public class Main {
                     case 2:
                         User user = new User(nickname, password);
                         System.out.println("Welcome to our animal store, " + nickname + "!");
-                        while(repeat){
+                        while (repeat) {
                             System.out.println("1. Show all animals\n" +
                                     "2. Buy animal\n" +
                                     "3. Show purchases\n" +
                                     "4. Exit");
                             n = sc.nextInt();
                             sc.nextLine();
-                            switch (n){
+                            switch (n) {
                                 case 1:
                                     System.out.println("Что вы хотите заказать:\n" +
                                             "Show all:\n" +

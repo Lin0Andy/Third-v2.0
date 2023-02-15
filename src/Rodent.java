@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 public class Rodent extends Animal{
-    protected Rodent(String name,int cost, int age,float weight, String sex, String colour, String species, String diet, String life_cycle){
+    protected Rodent(int cost, int age,float weight, String sex, String colour, String species, String diet, String life_cycle){
         this.name =name;
         this.age = age;
         this.colour = colour;
