@@ -9,7 +9,7 @@ public class User extends Log_in {
     private String firstName, lastName, username, password, email, address;
     private long phoneNumber;
     private double wallet;
-    private int balance;
+    private int balance = 0, cost = 0;
 
 
     User(String username, String password) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
@@ -273,6 +273,12 @@ public class User extends Log_in {
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
 
     public void setWallet(double wallet) {
         this.wallet = wallet;
@@ -309,4 +315,29 @@ public class User extends Log_in {
     public long getPhoneNumber() {
         return phoneNumber;
     }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void check() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        DataBase base = new DataBase();
+        try{
+            String sql1 = "SELECT * FROM users WHERE username = '" + this.username + "'";
+            ResultSet resultSet = base.statement.executeQuery(sql1);
+            if(balance >= cost){
+                balance -= cost;
+                setBalance(balance);
+                System.out.println("Purchased successfully!");
+            }
+        }catch (Exception ex){
+            System.out.println("Not enough balance!");
+            System.out.println(ex);
+        }
+    }
+
 }

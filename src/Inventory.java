@@ -1,5 +1,4 @@
 public class Inventory {
-    private String storeName;
     private String Trinkets = "toys";
     private String FoodItems = "food";
     private double trinketPrice = 0;
