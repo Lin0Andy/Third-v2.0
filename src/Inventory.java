@@ -1,12 +1,10 @@
-import java.util.ArrayList;
-
 public class Inventory {
     private String storeName;
     private String Trinkets = "toys";
     private String FoodItems = "food";
     private double trinketPrice = 0;
     private double foodPrice = 0;
-    double balance = 0;
+    double balance;
 
     public Inventory(String trinkets, double tPrice, String food, double fPrice) {
         Trinkets = trinkets;
@@ -32,4 +30,5 @@ public class Inventory {
             System.out.println("Not enough balance for trade!");
         }
     }
+
 }

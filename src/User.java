@@ -8,7 +8,7 @@ public class User extends Log_in{
 
     private String firstName, lastName, username, password, email, address;
     private long phoneNumber;
-    private double wallet;
+    public int balance = 0, cost = 0;
     private boolean isLoggedIn;
 
     User(String username, String password) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
@@ -23,6 +23,7 @@ public class User extends Log_in{
                 setLastName(resultset.getString(6));
                 setPhoneNumber(resultset.getLong(7));
                 setAddress(resultset.getString(8));
+                balance = resultset.getInt();
             }
         }
     }
@@ -41,6 +42,7 @@ public class User extends Log_in{
                         preparedStatement.setString(2, "Bird");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
+                        cost = resultSet.getInt(3);
                         preparedStatement.setFloat(5, resultSet.getFloat(4));
                         preparedStatement.setString(6, resultSet.getString(5));
                         preparedStatement.setString(7, resultSet.getString(6));
@@ -69,6 +71,7 @@ public class User extends Log_in{
                     preparedStatement.setString(2, "fish");
                     preparedStatement.setInt(3, resultSet.getInt(2));
                     preparedStatement.setInt(4, resultSet.getInt(3));
+                    cost = resultSet.getInt(3);
                     preparedStatement.setFloat(5, resultSet.getFloat(4));
                     preparedStatement.setString(6, resultSet.getString(5));
                     preparedStatement.setString(7, resultSet.getString(6));
@@ -95,6 +98,7 @@ public class User extends Log_in{
                     preparedStatement.setString(2, "Dog");
                     preparedStatement.setInt(3, resultSet.getInt(2));
                     preparedStatement.setInt(4, resultSet.getInt(3));
+                    cost = resultSet.getInt(3);
                     preparedStatement.setFloat(5, resultSet.getFloat(4));
                     preparedStatement.setString(6, resultSet.getString(5));
                     preparedStatement.setString(7, resultSet.getString(6));
@@ -119,6 +123,7 @@ public class User extends Log_in{
                     preparedStatement.setString(2, "Bird");
                     preparedStatement.setInt(3, resultSet.getInt(2));
                     preparedStatement.setInt(4, resultSet.getInt(3));
+                    cost = resultSet.getInt(3);
                     preparedStatement.setFloat(5, resultSet.getFloat(4));
                     preparedStatement.setString(6, resultSet.getString(5));
                     preparedStatement.setString(7, resultSet.getString(6));
@@ -142,6 +147,7 @@ public class User extends Log_in{
                     preparedStatement.setString(2, "Bird");
                     preparedStatement.setInt(3, resultSet.getInt(2));
                     preparedStatement.setInt(4, resultSet.getInt(3));
+                    cost = resultSet.getInt(3);
                     preparedStatement.setFloat(5, resultSet.getFloat(4));
                     preparedStatement.setString(6, resultSet.getString(5));
                     preparedStatement.setString(7, resultSet.getString(6));
@@ -245,9 +251,6 @@ public class User extends Log_in{
     public void setPhoneNumber(long phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public void setWallet(double wallet){
-        this.wallet = wallet;
-    }
     public String getPassword() {
         return this.password;
     }
@@ -260,20 +263,29 @@ public class User extends Log_in{
     public String getFirstName() {
         return firstName;
     }
-
     public String getLastName() {
         return lastName;
     }
-
     public String getAddress() {
         return address;
     }
-    public double getWallet(){
-        return this.wallet;
-    }
-
     public long getPhoneNumber() {
         return phoneNumber;
     }
 
+    public void check() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+        DataBase base = new DataBase();
+        try{
+            String sql1 = "SELECT * FROM users WHERE username = '" + this.username + "'";
+            ResultSet resultSet = base.statement.executeQuery(sql1);
+            if(balance >= cost){
+                balance -= cost;
+                setBalance(balance);
+                System.out.println("Purchased successfully!");
+            }
+        }catch (Exception ex){
+            System.out.println("Not enough balance!");
+            System.out.println(ex);
+        }
+    }
 }
