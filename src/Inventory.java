@@ -1,29 +1,35 @@
 import java.util.ArrayList;
 
 public class Inventory {
-    private ArrayList<Animal> products;
+    private String storeName;
+    private String Trinkets = "toys";
+    private String FoodItems = "food";
+    private double trinketPrice = 0;
+    private double foodPrice = 0;
+    double balance = 0;
 
-    public Inventory(){
-        products = new ArrayList<Animal>();
+    public Inventory(String trinkets, double tPrice, String food, double fPrice) {
+        Trinkets = trinkets;
+        FoodItems = food;
+        trinketPrice = tPrice;
+        foodPrice = fPrice;
     }
-    public void addProduct(Animal product){
-        products.add(product);
-    }
-    public ArrayList<Animal> getProducts(){
-        return products;
-    }
-    public Animal getProduct(String pName){
-        for (Animal product : products){
-            if(product.name.equals(pName)){
-                return product;
-            }
+
+    public void sellTrinkets(int id){
+        if(balance >= trinketPrice){
+            System.out.println(Trinkets + " sold for " + trinketPrice);
         }
-        return null;
+        else{
+            System.out.println("Not enough balance for trade!");
+        }
     }
-    public void listProducts(){
-        System.out.println("Product List: ");
-        for (Animal product : products){
-            System.out.println(product.toString());
+
+    public void sellFood(int id){
+        if(balance >= foodPrice){
+            System.out.println(FoodItems + " sold for " + foodPrice);
+        }
+        else{
+            System.out.println("Not enough balance for trade!");
         }
     }
 }
