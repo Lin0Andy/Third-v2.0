@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         Scanner sc = new Scanner(System.in);
         boolean repeat = true;
         int n = 0;
@@ -122,6 +122,5 @@ public class Main {
                 }
                 break;
         }
-    }
     }
 }

@@ -3,8 +3,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class Log_in {
+public abstract class Log_in {
     Scanner sc = new Scanner(System.in);
+
     int log_in(String nickname, String password) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
         ResultSet resultset = base.statement.executeQuery("SELECT nickname, passwordA FROM admin");

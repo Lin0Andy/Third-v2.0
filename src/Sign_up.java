@@ -26,6 +26,8 @@ public class Sign_up {
         String address = sc.nextLine();
         System.out.println("Enter the phone number");
         long phoneNumber = sc.nextLong();
+        System.out.println("Enter your balance");
+        int balance = sc.nextInt();
         int maxId = 0;
         try (ResultSet last_id = base.statement.executeQuery("SELECT max(id) FROM users")) {
             if (last_id.next()) {
@@ -34,7 +36,7 @@ public class Sign_up {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT users (id, username, email, passwordU, firstname, lastname, phoneNumber, address)" +
+        PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT users (id, username, email, passwordU, firstname, lastname, phoneNumber, address, balance)" +
                 " values (?,?,?,?,?,?,?,?)");
         preparedStatement.setInt(1, maxId + 1);
         preparedStatement.setString(2, username);
@@ -44,6 +46,7 @@ public class Sign_up {
         preparedStatement.setString(6, lastName);
         preparedStatement.setLong(7, phoneNumber);
         preparedStatement.setString(8, address);
+        preparedStatement.setInt(9, balance);
         preparedStatement.executeUpdate();
     }
     String getNickname(){
