@@ -24,7 +24,7 @@ public class User extends Log_in {
                 setLastName(resultset.getString(7));
                 setPhoneNumber(resultset.getLong(8));
                 setAddress(resultset.getString(9));
-                this.balance = resultset.getInt(2);
+                this.balance = resultset.getInt(3);
             }
         }
     }
@@ -35,29 +35,32 @@ public class User extends Log_in {
             case 1:
                 try{
                     String sql1 = "SELECT * FROM birds WHERE id = " + id;
-                    System.out.println(sql1);
                     ResultSet resultSet = base.statement.executeQuery(sql1);
                     PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT purchases(userName, typeOfAnimal, cost, age, weight, sex, abilities, diet, Life_cycle, color, species)" +
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
                     while(resultSet.next()){
-                        preparedStatement.setString(1, this.username);
-                        preparedStatement.setString(2, "Bird");
-                        preparedStatement.setInt(3, resultSet.getInt(2));
-                        preparedStatement.setInt(4, resultSet.getInt(3));
-                        cost = resultSet.getInt(3);
-                        preparedStatement.setFloat(5, resultSet.getFloat(4));
-                        preparedStatement.setString(6, resultSet.getString(5));
-                        preparedStatement.setString(7, resultSet.getString(6));
-                        preparedStatement.setString(8, resultSet.getString(7));
-                        preparedStatement.setString(9, resultSet.getString(8));
-                        preparedStatement.setString(10, resultSet.getString(9));
-                        preparedStatement.setString(11,resultSet.getString(10));
-                        check(resultSet.getInt(3));
-                        preparedStatement.executeUpdate();
-                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
+                        cost = resultSet.getInt(2);
+                        if(check(cost)){
+                            preparedStatement.setString(1, this.username);
+                            preparedStatement.setString(2, "Bird");
+                            preparedStatement.setInt(3, cost);
+                            preparedStatement.setInt(4, resultSet.getInt(3));
+                            preparedStatement.setFloat(5, resultSet.getFloat(4));
+                            preparedStatement.setString(6, resultSet.getString(5));
+                            preparedStatement.setString(7, resultSet.getString(6));
+                            preparedStatement.setString(8, resultSet.getString(7));
+                            preparedStatement.setString(9, resultSet.getString(8));
+                            preparedStatement.setString(10, resultSet.getString(9));
+                            preparedStatement.setString(11,resultSet.getString(10));
+                            preparedStatement.executeUpdate();
+                            base.statement.execute("UPDATE users set balance = " + this.balance + " WHERE username = '" + this.username + "'");
+                            String sql = "DELETE FROM birds where id = " + id;
+                            base.statement.executeUpdate(sql);
+                            System.out.println("Purchased successfully!");
+                        }
+                        else {System.out.println("Not enough balance!");}
+                        resultSet.close();
                     }
-                    String sql = "DELETE FROM birds where id = " + id;
-                    base.statement.executeUpdate(sql);
                 }
                 catch(Exception ex) {
                     System.out.println("Введен неверный id");
@@ -71,25 +74,28 @@ public class User extends Log_in {
                     PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT purchases(userName, typeOfAnimal, cost, age, weight, sex, diet, Life_cycle, color, species, abilities)" +
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
                     while (resultSet.next()){
-                        preparedStatement.setString(1, this.username);
-                        preparedStatement.setString(2, "fish");
-                        preparedStatement.setInt(3, resultSet.getInt(2));
-                        preparedStatement.setInt(4, resultSet.getInt(3));
-                        cost = resultSet.getInt(3);
-                        preparedStatement.setFloat(5, resultSet.getFloat(4));
-                        preparedStatement.setString(6, resultSet.getString(5));
-                        preparedStatement.setString(7, resultSet.getString(6));
-                        preparedStatement.setString(8, resultSet.getString(7));
-                        preparedStatement.setString(9, resultSet.getString(8));
-                        preparedStatement.setString(10, resultSet.getString(9));
-                        preparedStatement.setString(11,resultSet.getString(10));
-                        check(resultSet.getInt(3));
-                        preparedStatement.executeUpdate();
-                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
+                        cost = resultSet.getInt(2);
+                        if(check(cost)) {
+                            preparedStatement.setString(1, this.username);
+                            preparedStatement.setString(2, "fish");
+                            preparedStatement.setInt(3, cost);
+                            preparedStatement.setInt(4, resultSet.getInt(3));
+                            preparedStatement.setFloat(5, resultSet.getFloat(4));
+                            preparedStatement.setString(6, resultSet.getString(5));
+                            preparedStatement.setString(7, resultSet.getString(6));
+                            preparedStatement.setString(8, resultSet.getString(7));
+                            preparedStatement.setString(9, resultSet.getString(8));
+                            preparedStatement.setString(10, resultSet.getString(9));
+                            preparedStatement.setString(11, resultSet.getString(10));
+                            preparedStatement.executeUpdate();
+                            base.statement.executeUpdate("UPDATE users set balance = " + this.balance + " WHERE username = '" + this.username + "'");
+                            String sql = "DELETE FROM fish where id = " + id;
+                            base.statement.executeUpdate(sql);
+                            System.out.println("Purchased successfully!");
+                        }
+                        else {System.out.println("Not enough balance!");}
+                        resultSet.close();
                     }
-
-                    String sql = "DELETE FROM fish where id = " + id;
-                    base.statement.executeUpdate(sql);
                 }
                 catch(Exception ex) {
                     System.out.println("Введен неверный id");
@@ -102,26 +108,29 @@ public class User extends Log_in {
                     ResultSet resultSet = base.statement.executeQuery(sql1);
                     PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT purchases(userName, typeOfAnimal, cost, age, weight, sex, diet,Life_cycle, color,abilities,   species)" +
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    while (resultSet.next()){
-                        preparedStatement.setString(1, this.username);
-                        preparedStatement.setString(2, "Dog");
-                        preparedStatement.setInt(3, resultSet.getInt(2));
-                        preparedStatement.setInt(4, resultSet.getInt(3));
-                        cost = resultSet.getInt(3);
-                        preparedStatement.setFloat(5, resultSet.getFloat(4));
-                        preparedStatement.setString(6, resultSet.getString(5));
-                        preparedStatement.setString(7, resultSet.getString(6));
-                        preparedStatement.setString(8, resultSet.getString(7));
-                        preparedStatement.setString(9, resultSet.getString(8));
-                        preparedStatement.setString(10, resultSet.getString(9));
-                        preparedStatement.setString(11, resultSet.getString(10));
-                        check(resultSet.getInt(3));
-                        preparedStatement.executeUpdate();
-                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
+                    while (resultSet.next()) {
+                        cost = resultSet.getInt(2);
+                        if (check(cost)) {
+                            preparedStatement.setString(1, this.username);
+                            preparedStatement.setString(2, "Dog");
+                            preparedStatement.setInt(3, cost);
+                            preparedStatement.setInt(4, resultSet.getInt(3));
+                            preparedStatement.setFloat(5, resultSet.getFloat(4));
+                            preparedStatement.setString(6, resultSet.getString(5));
+                            preparedStatement.setString(7, resultSet.getString(6));
+                            preparedStatement.setString(8, resultSet.getString(7));
+                            preparedStatement.setString(9, resultSet.getString(8));
+                            preparedStatement.setString(10, resultSet.getString(9));
+                            preparedStatement.setString(11, resultSet.getString(10));
+                            preparedStatement.executeUpdate();
+                            base.statement.executeUpdate("UPDATE users set balance = " + this.balance + " WHERE username = '" + this.username + "'");
+                            String sql = "DELETE FROM dogs where id = " + id;
+                            base.statement.executeUpdate(sql);
+                            System.out.println("Purchased successfully!");
+                        }
+                        else {System.out.println("Not enough balance!");}
+                        resultSet.close();
                     }
-
-                    String sql = "DELETE FROM dogs where id = " + id;
-                    base.statement.executeUpdate(sql);
                 }
                 catch(Exception ex){
                     System.out.println("Введен неверный id");
@@ -134,25 +143,28 @@ public class User extends Log_in {
                     ResultSet resultSet = base.statement.executeQuery(sql1);
                     PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT purchases(userName, typeOfAnimal, cost, age, weight, sex,diet, Life_cycle, color,  species)" +
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    while(resultSet.next()){
-                        preparedStatement.setString(1, this.username);
-                        preparedStatement.setString(2, "Cat");
-                        preparedStatement.setInt(3, resultSet.getInt(2));
-                        preparedStatement.setInt(4, resultSet.getInt(3));
-                        cost = resultSet.getInt(3);
-                        preparedStatement.setFloat(5, resultSet.getFloat(4));
-                        preparedStatement.setString(6, resultSet.getString(5));
-                        preparedStatement.setString(7, resultSet.getString(6));
-                        preparedStatement.setString(8, resultSet.getString(7));
-                        preparedStatement.setString(9, resultSet.getString(8));
-                        preparedStatement.setString(10, resultSet.getString(9));
-                        check(resultSet.getInt(3));
-                        preparedStatement.executeUpdate();
-                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
+                    while(resultSet.next()) {
+                        cost = resultSet.getInt(2);
+                        if (check(cost)) {
+                            preparedStatement.setString(1, this.username);
+                            preparedStatement.setString(2, "Cat");
+                            preparedStatement.setInt(3, cost);
+                            preparedStatement.setInt(4, resultSet.getInt(3));
+                            preparedStatement.setFloat(5, resultSet.getFloat(4));
+                            preparedStatement.setString(6, resultSet.getString(5));
+                            preparedStatement.setString(7, resultSet.getString(6));
+                            preparedStatement.setString(8, resultSet.getString(7));
+                            preparedStatement.setString(9, resultSet.getString(8));
+                            preparedStatement.setString(10, resultSet.getString(9));
+                            preparedStatement.executeUpdate();
+                            base.statement.executeUpdate("UPDATE users set balance = " + this.balance + " WHERE username = '" + this.username + "'");
+                            String sql = "DELETE FROM cats where id = " +  id;
+                            base.statement.executeUpdate(sql);
+                            System.out.println("Purchased successfully!");
+                        }
+                        else {System.out.println("Not enough balance!");}
+                        resultSet.close();
                     }
-
-                    String sql = "DELETE FROM cats where id = " +  id;
-                    base.statement.executeUpdate(sql);
                 }
                 catch(Exception ex){
                     System.out.println("Введен неверный id :(");
@@ -165,25 +177,28 @@ public class User extends Log_in {
                     ResultSet resultSet = base.statement.executeQuery(sql1);
                     PreparedStatement preparedStatement = base.connection.prepareStatement("INSERT purchases(userName, typeOfAnimal, cost, age, weight, sex, diet, Life_cycle,  color, species)" +
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                    while(resultSet.next()){
-                        preparedStatement.setString(1, this.username);
-                        preparedStatement.setString(2, "Rodent");
-                        preparedStatement.setInt(3, resultSet.getInt(2));
-                        preparedStatement.setInt(4, resultSet.getInt(3));
-                        cost = resultSet.getInt(3);
-                        preparedStatement.setFloat(5, resultSet.getFloat(4));
-                        preparedStatement.setString(6, resultSet.getString(5));
-                        preparedStatement.setString(7, resultSet.getString(6));
-                        preparedStatement.setString(8, resultSet.getString(7));
-                        preparedStatement.setString(9, resultSet.getString(8));
-                        preparedStatement.setString(10, resultSet.getString(9));
-                        check(resultSet.getInt(3));
-                        preparedStatement.executeUpdate();
-                        base.statement.executeUpdate("UPDATE users set WHERE  = username '" + this.username + "' balance = " + this.balance);
+                    while(resultSet.next()) {
+                        cost = resultSet.getInt(2);
+                        if (check(cost)) {
+                            preparedStatement.setString(1, this.username);
+                            preparedStatement.setString(2, "Rodent");
+                            cost = resultSet.getInt(2);
+                            preparedStatement.setInt(4, resultSet.getInt(3));
+                            preparedStatement.setFloat(5, resultSet.getFloat(4));
+                            preparedStatement.setString(6, resultSet.getString(5));
+                            preparedStatement.setString(7, resultSet.getString(6));
+                            preparedStatement.setString(8, resultSet.getString(7));
+                            preparedStatement.setString(9, resultSet.getString(8));
+                            preparedStatement.setString(10, resultSet.getString(9));
+                            preparedStatement.executeUpdate();
+                            base.statement.executeUpdate("UPDATE users set balance = " + this.balance + " WHERE username = '" + this.username + "'");
+                            String sql = "DELETE FROM rodents where id = " + id;
+                            base.statement.executeUpdate(sql);
+                            System.out.println("Purchased successfully!");
+                        }
+                        else {System.out.println("Not enough balance!");}
+                        resultSet.close();
                     }
-
-                    String sql = "DELETE FROM rodents where id = " + id;
-                    base.statement.executeUpdate(sql);
                 }
                 catch(Exception ex){
                     System.out.println("Введен неверный id");
@@ -341,20 +356,23 @@ public class User extends Log_in {
         return balance;
     }
 
-    public void check(int cost) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public boolean check(int cost) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
         try{
             String sql1 = "SELECT * FROM users WHERE username = '" + this.username + "'";
             ResultSet resultSet = base.statement.executeQuery(sql1);
-            if(balance >= cost){
+            if(this.balance >= cost){
                 balance -= cost;
-                setBalance(balance);
-                System.out.println("Purchased successfully!");
+                return true;
+            }
+            else{
+                return false;
             }
         }catch (Exception ex){
             System.out.println("Not enough balance!");
             System.out.println(ex);
         }
+        return true;
     }
 
 }
