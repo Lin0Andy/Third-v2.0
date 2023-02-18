@@ -34,16 +34,16 @@ public class Main {
                     case 1:
                         Admin admin = new Admin();
                         while (repeat) {
-                            System.out.println("Что вы хотите изменить:\n" +
-                                    "1. Добавить новый питомец\n" +
-                                    "2. Удалить питомца\n" +
-                                    "3. Добавить нового администратора\n" +
+                            System.out.println("What do you want to change:\n" +
+                                    "1. Add new animal\n" +
+                                    "2. Delete animal\n" +
+                                    "3. Add new admin\n" +
                                     "4. Exit");
                             n = sc.nextInt();
                             sc.nextLine();
                             switch (n) {
                                 case 1:
-                                    System.out.println("Какой тип животного вы хотите добавить?");
+                                    System.out.println("What type of animal you want to add?");
                                     String type = sc.nextLine();
                                     admin.addNewAnimal(type);
                                     break;
