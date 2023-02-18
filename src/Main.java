@@ -82,6 +82,7 @@ public class Main {
                             sc.nextLine();
                             switch (n) {
                                 case 1:
+                                    User userg = new getAnimal();
                                     System.out.println("Что вы хотите заказать:\n" +
                                             "Show all:\n" +
                                             "1. Birds\n" +
@@ -91,9 +92,10 @@ public class Main {
                                             "5. Rodents");
                                     n = sc.nextInt();
                                     sc.nextLine();
-                                    user.getAnimals(n);
+                                    userg.getAnimals(n);
                                     break;
                                 case 2:
+                                    User userb = new buyAnimal();
                                     System.out.println("What animal you want buy?");
                                     System.out.println("1. Birds\n" +
                                             "2. Fish\n" +
@@ -103,10 +105,11 @@ public class Main {
                                     int type = sc.nextInt();
                                     System.out.println("Enter id of the animal:");
                                     int id = sc.nextInt();
-                                    user.buyAnimal(type, id);
+                                    userb.buyAnimal(type, id);
                                     break;
                                 case 3:
-                                    user.showPurchases();
+                                    User userS = new showPurcheses(user.getUsername(), user.getPassword());
+                                    userS.showPurchases();
                                     break;
                                 case 4:
                                     repeat = false;
