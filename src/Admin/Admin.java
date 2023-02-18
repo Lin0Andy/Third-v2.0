@@ -1,11 +1,13 @@
+package Admin;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
-
+import Animal.*;
+import DataBase.*;
 public class Admin {
   Scanner sc = new Scanner(System.in);
-    void addNewAnimal(String type) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public void addNewAnimal(String type) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         switch (type) {
             case "bird":
                 System.out.println("Enter the species:");
@@ -122,7 +124,7 @@ public class Admin {
         }
     }
   
-  void deleteAnimal(int m, int n) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+  public void deleteAnimal(int m, int n) throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
         switch (m){
             case 1:
@@ -179,7 +181,7 @@ public class Admin {
     }
   
   
-  void addAdmin() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+  public void addAdmin() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
         System.out.println("Enter nickname:");
         String nickname = sc.nextLine();

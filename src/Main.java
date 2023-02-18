@@ -1,5 +1,8 @@
+import Admin.Admin;
+import Log_in.Log_in;
+import Sign_up.Sign_up;
+import User.*;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -50,7 +53,7 @@ public class Main {
                                 case 2:
                                     System.out.println("What type of animal you want delete?");
                                     System.out.println("1. Birds\n" +
-                                            "2. Fish\n" +
+                                            "2. Animal.Fish\n" +
                                             "3. Dogs\n" +
                                             "4. Cats\n" +
                                             "5. Rodents");
@@ -86,7 +89,7 @@ public class Main {
                                     System.out.println("Что вы хотите заказать:\n" +
                                             "Show all:\n" +
                                             "1. Birds\n" +
-                                            "2. Fish\n" +
+                                            "2. Animal.Fish\n" +
                                             "3. Dogs\n" +
                                             "4. Cats\n" +
                                             "5. Rodents");
@@ -98,7 +101,7 @@ public class Main {
                                     User userb = new buyAnimal();
                                     System.out.println("What animal you want buy?");
                                     System.out.println("1. Birds\n" +
-                                            "2. Fish\n" +
+                                            "2. Animal.Fish\n" +
                                             "3. Dogs\n" +
                                             "4. Cats\n" +
                                             "5. Rodents");

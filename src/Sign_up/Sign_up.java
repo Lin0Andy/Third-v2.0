@@ -1,3 +1,7 @@
+package Sign_up;
+
+import DataBase.DataBase;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,7 +12,7 @@ public class Sign_up {
     private String nickname;
     private String password;
 
-    void addNewUser() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public void addNewUser() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the username");
@@ -48,7 +52,7 @@ public class Sign_up {
         preparedStatement.executeUpdate();
     }
 
-    String getNickname() {
+    public String getNickname() {
         return this.nickname;
     }
 

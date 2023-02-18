@@ -1,9 +1,14 @@
+package Animal;
+
+import Animal.Animal;
+import DataBase.DataBase;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-public class Cat extends Animal {
+public class Fish extends Animal {
     private int id;
     private int cost;
     private int age;
@@ -13,8 +18,7 @@ public class Cat extends Animal {
     private String species;
     private String diet;
     private String life_cycle;
-
-    protected Cat(int cost, int age, float weight, String sex, String color, String species, String diet, String life_cycle) {
+    public Fish(int cost, int age, float weight, String sex, String color, String species, String diet, String life_cycle){
         this.id = id;
         this.age = age;
         this.color = color;
@@ -25,14 +29,13 @@ public class Cat extends Animal {
         this.diet = diet;
         this.life_cycle = life_cycle;
     }
-
     @Override
-    void setDatabase() throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public void setDatabase() throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
         try {
-            ResultSet resultset = base.statement.executeQuery("SELECT * FROM cats");
+            ResultSet resultset = base.statement.executeQuery("SELECT * FROM fish");
             int maxId = 0;
-            try (ResultSet last_id = base.statement.executeQuery("SELECT max(id) FROM cats")) {
+            try (ResultSet last_id = base.statement.executeQuery("SELECT max(id) FROM fish")) {
                 if (last_id.next()) {
                     maxId = last_id.getInt(1);
                 }
@@ -57,3 +60,4 @@ public class Cat extends Animal {
         }
     }
 }
+

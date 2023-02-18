@@ -1,3 +1,5 @@
+package User;
+import DataBase.DataBase;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -5,11 +7,11 @@ import java.sql.SQLException;
 
 public class buyAnimal extends User implements Payment{
 
-    buyAnimal() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
+    public buyAnimal() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         super(null,null);
     }
     @Override
-    void buyAnimal(int type, int id) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, SQLException {
+    public void buyAnimal(int type, int id) throws ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException, SQLException {
         DataBase base = new DataBase();
         switch (type){
             case 1:
@@ -21,7 +23,7 @@ public class buyAnimal extends User implements Payment{
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ? ,?)");
                     while(resultSet.next()){
                         preparedStatement.setString(1, getUsername());
-                        preparedStatement.setString(2, "Bird");
+                        preparedStatement.setString(2, "Animal.Bird");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
                         preparedStatement.setFloat(5, resultSet.getFloat(4));
@@ -78,7 +80,7 @@ public class buyAnimal extends User implements Payment{
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     while (resultSet.next()){
                         preparedStatement.setString(1, getUsername());
-                        preparedStatement.setString(2, "Dog");
+                        preparedStatement.setString(2, "Animal.Dog");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
                         preparedStatement.setFloat(5, resultSet.getFloat(4));
@@ -107,7 +109,7 @@ public class buyAnimal extends User implements Payment{
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     while(resultSet.next()){
                         preparedStatement.setString(1, getUsername());
-                        preparedStatement.setString(2, "Cat");
+                        preparedStatement.setString(2, "Animal.Cat");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
                         preparedStatement.setFloat(5, resultSet.getFloat(4));
@@ -135,7 +137,7 @@ public class buyAnimal extends User implements Payment{
                             "values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
                     while(resultSet.next()){
                         preparedStatement.setString(1, getUsername());
-                        preparedStatement.setString(2, "Rodent");
+                        preparedStatement.setString(2, "Animal.Rodent");
                         preparedStatement.setInt(3, resultSet.getInt(2));
                         preparedStatement.setInt(4, resultSet.getInt(3));
                         preparedStatement.setFloat(5, resultSet.getFloat(4));

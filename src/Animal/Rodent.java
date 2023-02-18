@@ -1,10 +1,15 @@
+package Animal;
+
+import Animal.Animal;
+import DataBase.DataBase;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-public class Rodent extends Animal{
-    protected Rodent(int cost, int age,float weight, String sex, String colour, String species, String diet, String life_cycle){
+public class Rodent extends Animal {
+    public Rodent(int cost, int age, float weight, String sex, String colour, String species, String diet, String life_cycle){
         this.name =name;
         this.age = age;
         this.colour = colour;
@@ -16,7 +21,7 @@ public class Rodent extends Animal{
         this.life_cycle = life_cycle;
 
     }
-    void setDatabase() throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public void setDatabase() throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         DataBase base = new DataBase();
         try {
             ResultSet resultset = base.statement.executeQuery("SELECT * FROM rodents");

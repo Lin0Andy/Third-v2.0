@@ -1,3 +1,5 @@
+package DataBase;
+
 import java.lang.reflect.InvocationTargetException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +10,7 @@ public class DataBase {
     public Connection connection;
     public Statement statement;
 
-    DataBase() throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+    public DataBase() throws ClassNotFoundException, SQLException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
         try {
             connection = DriverManager.getConnection("jdbc:mysql://localhost/animal", "root", "Werreac!69!");
