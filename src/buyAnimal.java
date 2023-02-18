@@ -3,7 +3,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class buyAnimal extends User{
+public class buyAnimal extends User implements Payment{
 
     buyAnimal() throws SQLException, ClassNotFoundException, InvocationTargetException, NoSuchMethodException, InstantiationException, IllegalAccessException {
         super(null,null);
@@ -156,5 +156,15 @@ public class buyAnimal extends User{
                 }
                 break;
         }
+    }
+
+    @Override
+    public void sellTrinkets() {
+
+    }
+
+    @Override
+    public void sellFood() {
+
     }
 }
