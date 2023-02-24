@@ -53,7 +53,7 @@ public class Main {
                                 case 2:
                                     System.out.println("What type of animal you want delete?");
                                     System.out.println("1. Birds\n" +
-                                            "2. Animal.Fish\n" +
+                                            "2. Fish\n" +
                                             "3. Dogs\n" +
                                             "4. Cats\n" +
                                             "5. Rodents");
@@ -89,7 +89,7 @@ public class Main {
                                     System.out.println("Что вы хотите заказать:\n" +
                                             "Show all:\n" +
                                             "1. Birds\n" +
-                                            "2. Animal.Fish\n" +
+                                            "2. Fish\n" +
                                             "3. Dogs\n" +
                                             "4. Cats\n" +
                                             "5. Rodents");
@@ -101,7 +101,7 @@ public class Main {
                                     User userb = new buyAnimal();
                                     System.out.println("What animal you want buy?");
                                     System.out.println("1. Birds\n" +
-                                            "2. Animal.Fish\n" +
+                                            "2. Fish\n" +
                                             "3. Dogs\n" +
                                             "4. Cats\n" +
                                             "5. Rodents");
