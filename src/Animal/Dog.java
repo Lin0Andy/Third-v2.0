@@ -45,7 +45,7 @@ public class Dog extends Animal {
                 e.printStackTrace();
             }
 
-            String sql = "INSERT birds(id , cost , age, weight, sex, color,, abilities, diet, species, Life_cycle) values (?, ?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT dogs(id , cost , age, weight, sex, color, abilities, diet, species, Life_cycle) values (?, ?,?,?,?,?,?,?,?,?)";
             PreparedStatement preparedStatement = base.connection.prepareStatement(sql);
             preparedStatement.setInt(1, maxId + 1);
             preparedStatement.setInt(2, this.cost);
